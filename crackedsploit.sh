@@ -35,7 +35,7 @@ main() {
         fi
     else
         local free_trial=$(echo $hwid_info | ./jq -r ".free_trial")
-        if [ "$free_trial" == "false" ]
+        if true
         then
             echo -ne "\rEnter License Key (Press Enter to Continue as Free Trial): "
             read input_key
