@@ -19,8 +19,7 @@ main() {
     
     
             echo -e " Done.\nWhitelist Status Verified/cracked."
-        fi
-    fi
+        
 
     echo -e "Downloading Latest Roblox... (caca)"
     [ -f ./RobloxPlayer.zip ] && rm ./RobloxPlayer.zip
