@@ -17,42 +17,12 @@ main() {
     local hwid_resp=$(echo $hwid_info | ./jq -r ".success")
     rm ./hwid
     
-    if [ "$hwid_resp" != "true" ]
-    then
-        echo -ne "\rEnter License Key:       \b\b\b\b\b\b"
-        read input_key
-
-        echo -n "Contacting Secure Api... "
-        
-        local resp=$(curl -s "https://git.raptor.fun/api/sellix?key=$input_key&hwid=$user_hwid")
-        echo -e "Done.\n$resp"
-        
-        if [ "$resp" != 'Key Activation Complete!' ]
-        then
-            rm ./jq
-            exit
-            return
-        fi
-    else
-        local free_trial=$(echo $hwid_info | ./jq -r ".free_trial")
-        if [ "$free_trial" == "true" ]
-        then
-            echo -ne "\rEnter License Key (Press Enter to Continue as Free Trial): "
-            read input_key
-            
-            if [ "$input_key" != '' ]
-            then
-                echo -n "Contacting Secure Api... "
-                
-                local resp=$(curl -s "https://git.raptor.fun/api/sellix?key=$input_key&hwid=$user_hwid")
-                echo -e "Done.\n$resp"
-            fi
-        else
-            echo -e " Done.\nWhitelist Status Verified."
+    
+            echo -e " Done.\nWhitelist Status Verified/cracked."
         fi
     fi
 
-    echo -e "Downloading Latest Roblox..."
+    echo -e "Downloading Latest Roblox... (caca)"
     [ -f ./RobloxPlayer.zip ] && rm ./RobloxPlayer.zip
     local robloxVersionInfo=$(curl -s "https://clientsettingscdn.roblox.com/v2/client-version/MacPlayer")
     local versionInfo=$(curl -s "https://git.raptor.fun/main/version.json")
@@ -69,22 +39,22 @@ main() {
     fi
     
     rm ./jq
-    echo -n "Installing Latest Roblox... "
+    echo -n "Installing Latest Roblox... p"
     [ -d "/Applications/Roblox.app" ] && rm -rf "/Applications/Roblox.app"
     unzip -o -q "./RobloxPlayer.zip"
     mv ./RobloxPlayer.app /Applications/Roblox.app
     rm ./RobloxPlayer.zip
     echo -e "Done."
 
-    echo -e "Downloading MacSploit..."
+    echo -e "Downloading crackedMacSploit..."
     curl "https://git.raptor.fun/main/macsploit.zip" -o "./MacSploit.zip"
 
     echo -n "Installing MacSploit... "
     unzip -o -q "./MacSploit.zip"
     echo -e "Done."
 
-    echo -n "Updating Dylib..."
-    if [ "$version" != "$robloxVersion" ] && [ "$mChannel" == "preview" ]
+    echo -n "Updating Dylib... (this is the part where it could break)"
+    if [ "$version" != "$robloxVersion" ] && [ "$mChannel" == "po" ]
     then
         curl -Os "https://git.raptor.fun/preview/macsploit.dylib"
     else
@@ -109,7 +79,7 @@ main() {
     echo $versionInfo > ~/Downloads/ms-version.json
     
     echo -e "Done."
-    echo -e "Install Complete! Developed by Nexus42!"
+    echo -e "Install Complete! Developed by Nexus42! and hopefully cracked by jimbobo_0"
     exit
 }
 
